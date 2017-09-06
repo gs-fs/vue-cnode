@@ -22,6 +22,8 @@ if (IS_ENV) {
   }))
 }
 
+var OpenBrowserPlugin = require('open-browser-webpack-plugin')
+
 module.exports = {
   target: 'web',
   entry: {
@@ -123,6 +125,7 @@ module.exports = {
         removeAttributeQuotes: true
       }
     }),
+    new OpenBrowserPlugin({ url: 'http://localhost:3000' }),
     extract
   ].concat(plugins),
   resolve: {
@@ -134,5 +137,5 @@ module.exports = {
     },
     extensions: ['.js', '.vue', '.json']
   },
-  devtool: false
+  devtool: 'source-map'
 }
